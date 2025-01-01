@@ -31,7 +31,7 @@ public class Namings {
 			if (isVowel) {
 				resultWord = resultWord + vowels[r.nextInt(vowels.length)];
 			} else {
-				resultWord = resultWord + vowels[r.nextInt(consonants.length)];
+				resultWord = resultWord + consonants[r.nextInt(consonants.length)];
 			}
 			isVowel = !isVowel;
 		}
@@ -48,5 +48,10 @@ public class Namings {
 		}
 		
 		return "The " + governmentNames[r.nextInt(governmentNames.length)] + " of " + countryName;
+	}
+	
+	// Generate a Government Name without a designated Country Name
+	String generateGovernmentName() {
+		return generateGovernmentName(generateWord());
 	}
 }

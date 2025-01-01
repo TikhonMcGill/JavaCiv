@@ -3,8 +3,34 @@ import java.util.Random;
 
 public class Game {
 	static Namings namings = new Namings();
+	static ArrayList<State> allStates = new ArrayList<State>();
 	
-	public static void main(String [] args) {}
+	public static void main(String [] args) {
+		// Generate all States
+		int statesToMake = 100; //No. States to Generate
+		for (int i = 0; i < statesToMake; i++) {
+			State newState = new State(namings.generateGovernmentName());
+			allStates.add(newState);
+		}
+		
+		int turn = 1;
+		
+		// While there is more than one State, iterate through them
+		while (allStates.size() > 1) {
+			System.out.println("Turn " + Integer.toString(turn));
+			
+			for (State state: allStates) {
+				System.out.println("\t" + state.name + ": ");
+				System.out.println("\t\tPopulation: " + Integer.toString(state.population));
+				state.iterate();
+			}
+			
+			turn++;
+		}
+		
+		System.out.println(allStates.get(0) + " is the last State standing!");
+		
+	}
 	
 	static // Generate a Random World
 	World generateRandomWorld() {
@@ -22,7 +48,7 @@ public class Game {
 		}
 		
 		// Produce Random Adjacencies
-		for (Region region : allRegions) {
+		for (Region region: allRegions) {
 			newWorld.addAdjacency(region, allRegions.get(r.nextInt(regionsToMake)));
 		}
 		
