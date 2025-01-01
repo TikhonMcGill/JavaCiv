@@ -19,16 +19,35 @@ public class Game {
 		while (allStates.size() > 1) {
 			System.out.println("Turn " + Integer.toString(turn));
 			
+			ArrayList<State> statesToDelete = new ArrayList<State>();
+			
 			for (State state: allStates) {
+				// If the State is Defunct, delete it from all States
+				if (state.isDefunct()) {
+					statesToDelete.add(state);
+					System.out.println("\t " + state.name + " got destroyed!");
+					continue;
+				}
+				
 				System.out.println("\t" + state.name + ": ");
-				System.out.println("\t\tPopulation: " + Integer.toString(state.population));
+				System.out.println("\t\tPopulation: " + Long.toString(state.population));
 				state.iterate();
+			}
+			
+			// Delete all Defunct States
+			for (State state: statesToDelete) {
+				allStates.remove(state);
 			}
 			
 			turn++;
 		}
 		
-		System.out.println(allStates.get(0) + " is the last State standing!");
+		if (allStates.size() == 1) {
+			System.out.println(allStates.get(0) + " is the last State standing!");
+		} else {
+			System.out.println("No State survived!");
+		}
+		
 		
 	}
 	
