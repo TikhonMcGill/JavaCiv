@@ -8,7 +8,7 @@ public class Game {
 	public static void main(String [] args) {
 		//TODO Generate a World, with no. Regions = no. States
 		//TODO Give each State a UNIQUE Region, also naming the State after the Region
-		//TODO Create a Player Class, with an attached State, an "is_my_turn" bool, and a "take_action" method
+		//TODO Random Events
 		//TODO Create a "RandomPlayer" Class, extending Player
 		
 		// Generate all States
