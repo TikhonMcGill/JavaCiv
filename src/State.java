@@ -82,6 +82,27 @@ public class State {
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
 	
+	WarExhaustion exhaustion = WarExhaustion.None; // The State's War Exhaustion Tier
+	
+	// Raise War Exhaustion Tier, if it's not at the Maximum (Catastrophic)
+	public void raiseWarExhaustion() {
+		if (exhaustion.ordinal() == 5) {
+			return;
+		}
+		
+		exhaustion = WarExhaustion.values()[exhaustion.ordinal() + 1];
+	}
+	
+	// Lower War Exhaustion Tier, if it's not at the Minimum (None)
+	public void lowerWarExhaustion() {
+		if (exhaustion.ordinal() == 0) {
+			return;
+		}
+		
+		exhaustion = WarExhaustion.values()[exhaustion.ordinal() - 1];
+		
+	}
+	
 	// Constructor for the State, with only name
 	public State(String stateName) {
 		name = stateName;
@@ -106,8 +127,26 @@ public class State {
 		return defunct;
 	}
 	
+	// Handle War Exhaustion Changes
+	void iterateWarExhaustion() {
+		// If there are no Wars, roll the die to possibly lower the War Exhaustion Tier
+		if (wars.size() == 0) {
+			int warExhaustionTier = exhaustion.ordinal();
+			int roll = die.roll();
+			
+			// If the Number rolled is less than the War Exhaustion Tier, or the Number Rolled is 1, lower War Exhaustion Tier
+			// For example, if War Exhaustion is Catastrophic, that's equivalent to 6, so 5/6 chance that will get lowered
+			if (roll < (warExhaustionTier + 1) || roll == 1) {
+				lowerWarExhaustion();
+			}
+			
+		}
+	}
+	
 	// Handle Passive, per-Turn updates
 	public void iterate() {
+		iterateWarExhaustion();
+		
 		population *= 1.01;
 		
 		if (population > 1) {
