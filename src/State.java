@@ -92,7 +92,12 @@ public class State {
 		
 	}
 	
+	// Declare war on another State, provided they're not already at war, or the State itself
 	public void declareWar(State enemy) {
+		if (enemy == this) {
+			return;
+		}
+		
 		if (!wars.contains(enemy)) {
 			wars.add(enemy);
 		}
