@@ -38,9 +38,6 @@ public class Game {
 					System.out.println("\t " + state.name + " got destroyed!");
 					continue;
 				}
-				
-				System.out.println("\t" + state.name + ": ");
-				System.out.println("\t\tPopulation: " + Long.toString(state.population));
 				state.iterate();
 			}
 			

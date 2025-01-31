@@ -146,20 +146,6 @@ public class State {
 	// Handle Passive, per-Turn updates
 	public void iterate() {
 		iterateWarExhaustion();
-		
-		population *= 1.01;
-		
-		if (population > 1) {
-			population += 1;
-		}
-		
-		// Remove all Defunct States that are at war with this State, since they no longer exist
-		for (State war : wars) {
-			if (war.isDefunct() == true) {
-				wars.remove(war);
-			}
-		}
-		
 	}
 	
 	// Declare war on another State, provided they're not already at war, or the State itself
