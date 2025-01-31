@@ -51,6 +51,24 @@ public class State {
 		Prosperous
 	}
 	
+	enum Crime {
+		Negligible,
+		Minimal,
+		Small,
+		Considerable,
+		High,
+		MafiaState
+	}
+	
+	enum Corruption {
+		Negligible,
+		Minimal,
+		Low,
+		Noticeable,
+		Significant,
+		Crippling
+	}
+	
 	Die die = new Die();
 	
 	ArrayList<State> wars = new ArrayList<State>();
@@ -76,6 +94,7 @@ public class State {
 		return false;
 	}
 	
+	// Handle Passive, per-Turn calculations
 	public void iterate() {
 		population *= 1.01;
 		
