@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 
 public class State {
-	Region capital;
-	ArrayList<Region> ownedRegions = new ArrayList<Region>();
+	Region capital; // The Capital Region of the State - losing it immediately drops Stability down by 1 Tier (if possible)
+	ArrayList<Region> ownedRegions = new ArrayList<Region>(); // The Regions owned by the State
 	
-	String name;
+	String name; // The name of the State
 	
+	// Tier representing the State's Population
 	enum Population {
 		Sparse,
 		Tiny,
@@ -15,6 +16,7 @@ public class State {
 		Huge
 	}
 	
+	// Tier representing the size of the State's Economy
 	enum Economy {
 		Desolate,
 		Poor,
@@ -24,6 +26,7 @@ public class State {
 		Large
 	}
 	
+	// Tier of how large/powerful the State's Army is
 	enum Army {
 		None,
 		Ceremonial,
@@ -33,6 +36,7 @@ public class State {
 		High
 	}
 	
+	// Tier of how exhausted the State is from War
 	enum WarExhaustion {
 		None,
 		Negligible,
@@ -42,6 +46,7 @@ public class State {
 		Catastrophic
 	}
 	
+	// Tier of how Stable the State is
 	enum Stability {
 		Anarchy,
 		Minimal,
@@ -51,6 +56,7 @@ public class State {
 		Prosperous
 	}
 	
+	// Tier of how much Crime there is in the State
 	enum Crime {
 		Negligible,
 		Minimal,
@@ -60,6 +66,7 @@ public class State {
 		MafiaState
 	}
 	
+	// Tier of how "Corrupt" the State is
 	enum Corruption {
 		Negligible,
 		Minimal,
@@ -69,9 +76,9 @@ public class State {
 		Crippling
 	}
 	
-	Die die = new Die();
+	Die die = new Die(); // The Die with which the State does Random Rolls
 	
-	ArrayList<State> wars = new ArrayList<State>();
+	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
 	
 	public State(String stateName) {
 		name = stateName;
