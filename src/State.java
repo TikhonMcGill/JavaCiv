@@ -82,10 +82,18 @@ public class State {
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
 	
+	// Constructor for the State, with only name
 	public State(String stateName) {
 		name = stateName;
 	}
 	
+	// Constructor for the State, with name and Capital Region
+	public State(String stateName, Region stateCapital) {
+		name = stateName;
+		capital = stateCapital;
+	}
+	
+	// Set the State's Capital Region
 	public void setCapital(Region newCapital) {
 		capital = newCapital;
 		if (!ownedRegions.contains(newCapital)) {
@@ -98,7 +106,7 @@ public class State {
 		return defunct;
 	}
 	
-	// Handle Passive, per-Turn calculations
+	// Handle Passive, per-Turn updates
 	public void iterate() {
 		population *= 1.01;
 		
