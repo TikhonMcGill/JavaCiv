@@ -10,6 +10,11 @@ public class Game {
 		//TODO Give each State a UNIQUE Region, also naming the State after the Region
 		//TODO Random Events
 		//TODO Create a "RandomPlayer" Class, extending Player
+		/*
+		 * Main Tenets:
+		 * 1. Dice System - If there's any Randomness, it's a Dice Roll, from 1 to 6
+		 * 2. Tiers, not Numbers - Instead of specific Numbers, low-medium-high, bad-medium-good, etc. etc. etc.
+		 */
 		
 		// Generate all States
 		int statesToMake = 100; //No. States to Generate

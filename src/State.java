@@ -6,12 +6,50 @@ public class State {
 	
 	String name;
 	
-	long population = 100;
-	long money = 0;
-	long soldiers = 0;
+	enum Population {
+		Sparse,
+		Tiny,
+		Small,
+		Medium,
+		Large,
+		Huge
+	}
 	
-	double warExhaustion = 0.0;
-	double stability = 100.0;
+	enum Economy {
+		Desolate,
+		Poor,
+		Tiny,
+		Small,
+		Medium,
+		Large
+	}
+	
+	enum Army {
+		None,
+		Ceremonial,
+		Tiny,
+		Small,
+		Medium,
+		High
+	}
+	
+	enum WarExhaustion {
+		None,
+		Negligible,
+		Noticeable,
+		Significant,
+		Critical,
+		Catastrophic
+	}
+	
+	enum Stability {
+		Anarchy,
+		Minimal,
+		Unstable,
+		Shakey,
+		Stable,
+		Prosperous
+	}
 	
 	ArrayList<State> wars = new ArrayList<State>();
 	
