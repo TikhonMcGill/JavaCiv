@@ -6,6 +6,8 @@ public class State {
 	
 	String name; // The name of the State
 	
+	boolean defunct = false; // If true, the State is "defunct" and out of the game
+	
 	// Tier representing the State's Population
 	enum Population {
 		Sparse,
@@ -93,12 +95,7 @@ public class State {
 	
 	// Determine if the State is "defunct", i.e. gone from the game
 	public boolean isDefunct() {
-		// If a State has no people, it is defunct
-		if (population <= 0) {
-			return true;
-		}
-		
-		return false;
+		return defunct;
 	}
 	
 	// Handle Passive, per-Turn calculations
