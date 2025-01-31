@@ -51,6 +51,8 @@ public class State {
 		Prosperous
 	}
 	
+	Die die = new Die();
+	
 	ArrayList<State> wars = new ArrayList<State>();
 	
 	public State(String stateName) {
