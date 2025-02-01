@@ -6,10 +6,16 @@ public class Game {
 	static ArrayList<State> allStates = new ArrayList<State>();
 	
 	public static void main(String [] args) {
-		//TODO Generate a World, with no. Regions = no. States
-		//TODO Give each State a UNIQUE Region, also naming the State after the Region
-		//TODO Random Events
-		//TODO Create a "RandomPlayer" Class, extending Player
+		// TODO Generate a World, with no. Regions = no. States
+		// TODO Give each State a UNIQUE Region, also naming the State after the Region
+		// TODO Random Events
+		// TODO Create a "RandomPlayer" Class, extending Player
+		// TODO Implement Chosen Increase (default = Population) to grow at beginning of each turn (Roll dice, 1 = shrink, 6 = grow)
+		// TODO Let Players Choose what to roll dice on each Turn to increase
+		// TODO Implement ability to increase/decrease on tier at the cost of another (e.g. Conscription = Lower Population, Raise Army Size)
+		// TODO Implement Power Tiers for States - Unrecognized Power, Insignificant Power, Minor Power, Secondary Power, Major Power, Great Power
+		// TODO Remove Region System for now
+		// TODO Add "Size" Value for States' land - Microstate, Tiny, Small, Medium, Large, Massive
 		/*
 		 * Main Tenets:
 		 * 1. Dice System - If there's any Randomness, it's a Dice Roll, from 1 to 6
