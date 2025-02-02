@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class State {
 	String name; // The name of the State
@@ -85,11 +86,43 @@ public class State {
 		Massive
 	}
 	
+	// Tier of the State's Power
+	enum Power {
+		Super,
+		Great,
+		Secondary,
+		Minor,
+		Insignificant,
+		Unrecognized
+	}
+	
+	// Tier of a State's Influence over another Power
+	enum Influence {
+		Neglibible,
+		Tiny,
+		Small,
+		Medium,
+		Large,
+		Master,
+	}
+	
+	// Tier of a State's Technology
+	enum Technology {
+		Backwards,
+		Outdated,
+		Weak,
+		Medium,
+		Strong,
+		HighTech,
+	}
+	
 	Die die = new Die(); // The Die with which the State does Random Rolls
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
 	
 	WarExhaustion exhaustion = WarExhaustion.None; // The State's War Exhaustion Tier
+	
+	HashMap<State, Influence> influences = new HashMap<State, Influence>(); // The State's Influence level over other States
 	
 	// Raise War Exhaustion Tier, if it's not at the Maximum (Catastrophic)
 	public void raiseWarExhaustion() {

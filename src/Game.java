@@ -11,10 +11,14 @@ public class Game {
 		// TODO Implement Chosen Increase (default = Population) to grow at beginning of each turn (Roll dice, 1 = shrink, 6 = grow)
 		// TODO Let Players Choose what to roll dice on each Turn to increase
 		// TODO Implement ability to increase/decrease on tier at the cost of another (e.g. Conscription = Lower Population, Raise Army Size)
-		// TODO Implement Power Tiers for States - Unrecognized Power, Insignificant Power, Minor Power, Secondary Power, Major Power, Great Power
 		// TODO Consider Sphere of Influence System, also tier-based, State-to-State (only Great Powers can have Influence, maybe?)
 		// TODO Create Helper Methods for Raising, Lowering all State Tiers (provided not at extremes)
 		// TODO Consider spending Influence to take positive or give negative Tiers (e.g. lower influence, take land from influenced State)
+		// TODO In Wars, peace deals could be taking positive Tiers (e.g. taking population, land, etc.), or giving negative Tiers (e.g. dumping Criminals, etc.)
+		// TODO Optional Randomized Starts, for fun
+		// TODO Idea - if have excess Tiers, can transfer to another (e.g. if excessive land, can build penal colonies, lowering crime)
+		// TODO Crisis System, Tier-based (e.g. Calm, Flashpoint, etc.)
+		// TODO Add all Tiers to the State, instead of just Enum Definitions
 		
 		/*
 		 * Main Tenets:
