@@ -16,6 +16,10 @@ public class Game {
 		// TODO Implement Power Tiers for States - Unrecognized Power, Insignificant Power, Minor Power, Secondary Power, Major Power, Great Power
 		// TODO Remove Region System for now
 		// TODO Add "Size" Value for States' land - Microstate, Tiny, Small, Medium, Large, Massive
+		// TODO Consider Sphere of Influence System, also tier-based, State-to-State (only Great Powers can have Influence, maybe?)
+		// TODO Create Helper Methods for Raising, Lowering all State Tiers (provided not at extremes)
+		// TODO Consider spending Influence to take positive or give negative Tiers (e.g. lower influence, take land from influenced State)
+		
 		/*
 		 * Main Tenets:
 		 * 1. Dice System - If there's any Randomness, it's a Dice Roll, from 1 to 6

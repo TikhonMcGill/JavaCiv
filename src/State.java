@@ -78,6 +78,8 @@ public class State {
 		Crippling
 	}
 	
+	
+	
 	Die die = new Die(); // The Die with which the State does Random Rolls
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
