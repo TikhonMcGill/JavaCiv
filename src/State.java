@@ -75,6 +75,16 @@ public class State {
 		Crippling
 	}
 	
+	// Tier of State's Size
+	enum Size {
+		Microstate,
+		Tiny,
+		Small,
+		Medium,
+		Large,
+		Massive
+	}
+	
 	Die die = new Die(); // The Die with which the State does Random Rolls
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
