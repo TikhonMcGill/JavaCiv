@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 
 public class State {
-	Region capital; // The Capital Region of the State - losing it immediately drops Stability down by 1 Tier (if possible)
-	ArrayList<Region> ownedRegions = new ArrayList<Region>(); // The Regions owned by the State
-	
 	String name; // The name of the State
 	
 	boolean defunct = false; // If true, the State is "defunct" and out of the game
@@ -78,8 +75,6 @@ public class State {
 		Crippling
 	}
 	
-	
-	
 	Die die = new Die(); // The Die with which the State does Random Rolls
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
@@ -105,23 +100,9 @@ public class State {
 		
 	}
 	
-	// Constructor for the State, with only name
+	// Constructor for the State
 	public State(String stateName) {
 		name = stateName;
-	}
-	
-	// Constructor for the State, with name and Capital Region
-	public State(String stateName, Region stateCapital) {
-		name = stateName;
-		capital = stateCapital;
-	}
-	
-	// Set the State's Capital Region
-	public void setCapital(Region newCapital) {
-		capital = newCapital;
-		if (!ownedRegions.contains(newCapital)) {
-			ownedRegions.add(newCapital);
-		}
 	}
 	
 	// Determine if the State is "defunct", i.e. gone from the game

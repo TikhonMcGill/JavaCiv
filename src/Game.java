@@ -6,8 +6,6 @@ public class Game {
 	static ArrayList<State> allStates = new ArrayList<State>();
 	
 	public static void main(String [] args) {
-		// TODO Generate a World, with no. Regions = no. States
-		// TODO Give each State a UNIQUE Region, also naming the State after the Region
 		// TODO Random Events
 		// TODO Create a "RandomPlayer" Class, extending Player
 		// TODO Implement Chosen Increase (default = Population) to grow at beginning of each turn (Roll dice, 1 = shrink, 6 = grow)
@@ -67,31 +65,4 @@ public class Game {
 		
 		
 	}
-	
-	static // Generate a Random World
-	World generateRandomWorld() {
-		Random r = new Random();
-		
-		int regionsToMake = r.nextInt(10, 101);
-		
-		ArrayList<Region> allRegions = new ArrayList<Region>();
-		World newWorld = new World();
-		
-		// Generate Randomly-named Regions
-		for (int i = 0; i < regionsToMake; i++) {
-			Region newRegion = new Region(namings.generateWord());
-			allRegions.add(newRegion);
-		}
-		
-		// Produce Random Adjacencies
-		for (Region region: allRegions) {
-			newWorld.addAdjacency(region, allRegions.get(r.nextInt(regionsToMake)));
-		}
-		
-		// Prepare the Final World
-		newWorld.setRegions(allRegions);
-		return newWorld;
-		
-	}
-	
 }
