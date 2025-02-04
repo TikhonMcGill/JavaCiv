@@ -8,8 +8,8 @@ public class Game {
 	public static void main(String [] args) {
 		// TODO Random Events
 		// TODO Create a "RandomPlayer" Class, extending Player
-		// TODO Implement Chosen Increase (default = Population) to grow at beginning of each turn (Roll dice, 1 = shrink, 6 = grow)
 		// TODO Let Players Choose what to roll dice on each Turn to increase
+		// TODO Implement Chosen Increase (default = Population) to grow at beginning of each turn (Roll dice, 1 = shrink, 6 = grow)
 		// TODO Implement ability to increase/decrease on tier at the cost of another (e.g. Conscription = Lower Population, Raise Army Size)
 		// TODO Consider Sphere of Influence System, also tier-based, State-to-State (only Great Powers can have Influence, maybe?)
 		// TODO Create Helper Methods for Raising, Lowering all State Tiers (provided not at extremes)
@@ -19,6 +19,8 @@ public class Game {
 		// TODO Idea - if have excess Tiers, can transfer to another (e.g. if excessive land, can build penal colonies, lowering crime)
 		// TODO Crisis System, Tier-based (e.g. Calm, Flashpoint, etc.)
 		// TODO Add all Tiers to the State, instead of just Enum Definitions
+		// TODO Idea - spending a different tier to influence a State
+		// TODO Idea - Diplomatic Reputation as another tier
 		
 		/*
 		 * Main Tenets:
@@ -60,7 +62,7 @@ public class Game {
 		}
 		
 		if (allStates.size() == 1) {
-			System.out.println(allStates.get(0) + " is the last State standing!");
+			System.out.println(allStates.get(0).name + " is the last State standing!");
 		} else {
 			System.out.println("No State survived!");
 		}

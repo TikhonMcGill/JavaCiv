@@ -3,7 +3,6 @@ import java.util.HashMap;
 
 public class State {
 	String name; // The name of the State
-	
 	boolean defunct = false; // If true, the State is "defunct" and out of the game
 	
 	// Tier representing the State's Population
@@ -116,30 +115,60 @@ public class State {
 		HighTech,
 	}
 	
+	// Tiers that can be Improved through Effort
+	enum Improvable {
+		Population
+	}
+	
 	Die die = new Die(); // The Die with which the State does Random Rolls
 	
 	ArrayList<State> wars = new ArrayList<State>(); // The States this State is at war with, and can attack
 	
-	WarExhaustion exhaustion = WarExhaustion.None; // The State's War Exhaustion Tier
+	WarExhaustion warExhaustion = WarExhaustion.None; // The State's War Exhaustion Tier
+	
+	Population population = Population.Sparse; // The State's Population
+	
+	Improvable improvement = Improvable.Population; // The Current Tier that the State is improving (Population by default)
 	
 	HashMap<State, Influence> influences = new HashMap<State, Influence>(); // The State's Influence level over other States
 	
 	// Raise War Exhaustion Tier, if it's not at the Maximum (Catastrophic)
 	public void raiseWarExhaustion() {
-		if (exhaustion.ordinal() == 5) {
+		if (warExhaustion.ordinal() == 5) {
 			return;
 		}
 		
-		exhaustion = WarExhaustion.values()[exhaustion.ordinal() + 1];
+		warExhaustion = WarExhaustion.values()[warExhaustion.ordinal() + 1];
 	}
 	
 	// Lower War Exhaustion Tier, if it's not at the Minimum (None)
 	public void lowerWarExhaustion() {
-		if (exhaustion.ordinal() == 0) {
+		if (warExhaustion.ordinal() == 0) {
 			return;
 		}
 		
-		exhaustion = WarExhaustion.values()[exhaustion.ordinal() - 1];
+		warExhaustion = WarExhaustion.values()[warExhaustion.ordinal() - 1];
+		
+	}
+	
+	// Raise Population Tier, if it's not at the Maximum (Huge)
+	public void raisePopulation() {
+		if (population.ordinal() == 5) {
+			return;
+		}
+		
+		population = Population.values()[population.ordinal() + 1];
+	}
+	
+	// Lower Population Tier - if the Population is at the minimum (Sparse),
+	// and is lowered, that's Game Over for the State
+	public void lowerPopulation() {
+		if (population.ordinal() == 0) {
+			defunct = true;
+			return;
+		}
+		
+		population = Population.values()[population.ordinal() - 1];
 		
 	}
 	
@@ -153,11 +182,42 @@ public class State {
 		return defunct;
 	}
 	
+	// Iterate the Improved Tier
+	void iterateImprovement() {
+		int result = die.roll();
+		
+		// If the Dice didn't roll 1 or 6, no change, so return
+		if (result != 1 && result != 6) {
+			return;
+		}
+		
+		if (result == 1) {
+			switch (improvement) {
+			case Population:
+				lowerPopulation();
+				break;
+			default:
+				break;
+			}
+		} else {
+			switch (improvement) {
+			case Population:
+				raisePopulation();
+				break;
+			default:
+				break;
+			
+			}
+		}
+		
+		
+	}
+	
 	// Handle War Exhaustion Changes
 	void iterateWarExhaustion() {
 		// If there are no Wars, roll the die to possibly lower the War Exhaustion Tier
 		if (wars.size() == 0) {
-			int warExhaustionTier = exhaustion.ordinal();
+			int warExhaustionTier = warExhaustion.ordinal();
 			int roll = die.roll();
 			
 			// If the Number rolled is less than the War Exhaustion Tier, or the Number Rolled is 1, lower War Exhaustion Tier
@@ -171,7 +231,12 @@ public class State {
 	
 	// Handle Passive, per-Turn updates
 	public void iterate() {
+		if (isDefunct()) {
+			return;
+		}
+		
 		iterateWarExhaustion();
+		iterateImprovement();
 	}
 	
 	// Declare war on another State, provided they're not already at war, or the State itself
