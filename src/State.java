@@ -117,7 +117,13 @@ public class State {
 	
 	// Tiers that can be Improved through Effort
 	enum Improvable {
-		Population
+		Population,
+		Economy,
+		Army,
+		WarExhaustion,
+		Crime,
+		Size,
+		Technology
 	}
 	
 	Die die = new Die(); // The Die with which the State does Random Rolls
