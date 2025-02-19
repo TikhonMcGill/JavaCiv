@@ -16,11 +16,13 @@ public class Game {
 		// TODO Consider spending Influence to take positive or give negative Tiers (e.g. lower influence, take land from influenced State)
 		// TODO In Wars, peace deals could be taking positive Tiers (e.g. taking population, land, etc.), or giving negative Tiers (e.g. dumping Criminals, etc.)
 		// TODO Optional Randomized Starts, for fun
-		// TODO Idea - if have excess Tiers, can transfer to another (e.g. if excessive land, can build penal colonies, lowering crime)
+		// TODO Idea - if have excess Tiers, can transfer to another (e.g. if excessive land, can build penal colonies, lowering crime, lowering land) - need unique command
+		// for each "Trade" of Tiers
 		// TODO Crisis System, Tier-based (e.g. Calm, Flashpoint, etc.)
 		// TODO Add all Tiers to the State, instead of just Enum Definitions
 		// TODO Idea - spending a different tier to influence a State
 		// TODO Idea - Diplomatic Reputation as another tier
+		// TODO Should not be allowed to set Improvable if it is at Max Level (or at Min Level, if lowering e.g. Crime)
 		
 		/*
 		 * Main Tenets:

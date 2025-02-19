@@ -117,7 +117,6 @@ public class State {
 	
 	// Tiers that can be Improved through Effort
 	enum Improvable {
-		Population,
 		Economy,
 		Army,
 		WarExhaustion,
@@ -134,9 +133,14 @@ public class State {
 	
 	Population population = Population.Sparse; // The State's Population
 	
-	Improvable improvement = Improvable.Population; // The Current Tier that the State is improving (Population by default)
+	Improvable improvement = Improvable.Economy; // The Current Tier that the State is improving (Population by default)
 	
 	HashMap<State, Influence> influences = new HashMap<State, Influence>(); // The State's Influence level over other States
+	
+	// Set the Improvable Tier
+	public void setImprovable(Improvable improvable) {
+		improvement = improvable;
+	}
 	
 	// Raise War Exhaustion Tier, if it's not at the Maximum (Catastrophic)
 	public void raiseWarExhaustion() {
